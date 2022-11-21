@@ -23,4 +23,4 @@ bin-release/
 .vs/SignalR.Demo/FileContentIndex/957b94be-6b1e-46a1-b25a-ef355453e5d6.vsidx
 .vs/SignalR.Demo/FileContentIndex/read.lock
 .vs/SignalR.Demo/v17/.wsuo
-.vs/VSWorkspaceState.json
+.vs/*
