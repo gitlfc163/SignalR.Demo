@@ -17,3 +17,9 @@ bin-release/
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 /SignalR.Demo.WebAPI/.vs
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/SignalR.Demo/FileContentIndex/715fa9e2-a52e-4d5f-96e6-5074786ba405.vsidx
+.vs/SignalR.Demo/FileContentIndex/957b94be-6b1e-46a1-b25a-ef355453e5d6.vsidx
+.vs/SignalR.Demo/FileContentIndex/read.lock
+.vs/SignalR.Demo/v17/.wsuo
