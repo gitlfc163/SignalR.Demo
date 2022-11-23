@@ -1,4 +1,4 @@
-namespace SignalR.Hubs.Demo2
+namespace SignalR.Hubs.Demo
 {
     public class WeatherForecast
     {

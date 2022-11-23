@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using SignalR.Hubs.Demo;
 
-namespace SignalR.Hubs.Demo2.Controllers
+namespace SignalR.Hubs.Demo.Controllers
 {
     [ApiController]
     [Route("[controller]")]
