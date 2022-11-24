@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
-namespace SignalR.ChatClient.Demo.Controllers
+namespace MySignalR.ChatClient.Demo.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -15,7 +15,7 @@ namespace SignalR.ChatClient.Demo.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly IHubContext hubContext;
 
-        public WeatherForecastController(IHubContext hubContext,ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IHubContext hubContext, ILogger<WeatherForecastController> logger)
         {
             this.hubContext = hubContext;
             _logger = logger;

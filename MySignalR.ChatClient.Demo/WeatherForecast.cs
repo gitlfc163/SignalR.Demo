@@ -1,4 +1,4 @@
-namespace SignalR.ChatClient.Demo
+namespace MySignalR.ChatClient.Demo
 {
     public class WeatherForecast
     {

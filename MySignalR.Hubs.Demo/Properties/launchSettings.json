@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:63606",
-      "sslPort": 44391
+      "applicationUrl": "http://localhost:13232",
+      "sslPort": 0
     }
   },
   "profiles": {
-    "SignalR.ChatClient.Demo": {
+    "MySignalR.Hubs.Demo": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5266",
+      "applicationUrl": "http://localhost:5207",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -1,16 +1,17 @@
-using SignalR.Hubs.Demo.Hubs;
+using MySignalR.Hubs.Demo.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSignalR(); //注册所有SignalR的服务
+//注册所有SignalR的服务
+builder.Services.AddSignalR();
+
+#region Cors
 //允许客户端跨域访问
-string[] urls = new[] { "http://localhost:5173" };
+string[] urls = new[] { "http://localhost:5173", "http://localhost:5266" };
 builder.Services.AddCors(options =>
 {
     options.AddPolicy
@@ -31,8 +32,8 @@ builder.Services.AddCors(options =>
                 .AllowAnyMethod().AllowCredentials();
             }
         );
-});
-
+}); 
+#endregion
 
 var app = builder.Build();
 app.UseCors("CorsPolicy");
@@ -42,7 +43,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 //app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
