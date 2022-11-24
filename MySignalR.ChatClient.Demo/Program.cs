@@ -1,32 +1,19 @@
 using Microsoft.AspNetCore.SignalR.Client;
+using MySignalR.ChatClient.Demo.Consumer;
+using MySignalR.ChatClient.Demo.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//采用下面的形式把配置类型 实体注入到容器,以支持IOptions/IOptionsSnapshot/IOptionsMonitor
+builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSetting"));
 
-#region HubConnection
-HubConnection hubConnection = new HubConnectionBuilder()
-.WithUrl(new Uri("http://localhost:5207/Hubs/ChatRoomHub"))
-.WithAutomaticReconnect(new[] { TimeSpan.Zero, TimeSpan.Zero, TimeSpan.FromSeconds(10) })
-.Build();
-
-//客户端向服务端中心的GetMessage返回结果
-hubConnection.On("GetMessage", async () =>
-{
-    Console.WriteLine("Enter message:");
-    var message = "test";//await Console.In.ReadLineAsync()||
-    return message;
-});
-
-hubConnection.On<string, string>("ReceivePublicMessage", (user, message) =>
-{
-    Console.WriteLine(message);
-}); 
+#region HubConsumer
+builder.Services.AddSingleton<INotificationHubConsumer, NotificationHubConsumer>();
+builder.Services.AddSingleton<IChatRoomHubConsumer, ChatRoomHubConsumer>();
 #endregion
 
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

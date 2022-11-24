@@ -7,20 +7,20 @@ namespace MySignalR.WpfClient.Demo
 {
     public partial class MainWindow : Window
     {
-        HubConnection connection;
+        HubConnection _hubConnection;
         public MainWindow()
         {
             InitializeComponent();
 
-            connection = new HubConnectionBuilder()
+            _hubConnection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:5207/Hubs/ChatRoomHub")
                 .Build();
 
             #region snippet_ClosedRestart
-            connection.Closed += async (error) =>
+            _hubConnection.Closed += async (error) =>
             {
                 await Task.Delay(new Random().Next(0, 5) * 1000);
-                await connection.StartAsync();
+                await _hubConnection.StartAsync();
             };
             #endregion
         }
@@ -28,7 +28,7 @@ namespace MySignalR.WpfClient.Demo
         private async void connectButton_Click(object sender, RoutedEventArgs e)
         {
             #region snippet_ConnectionOn
-            connection.On<string, string>("ReceiveMessage", (user, message) =>
+            _hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
             {
                 this.Dispatcher.Invoke(() =>
                 {
@@ -40,7 +40,7 @@ namespace MySignalR.WpfClient.Demo
 
             try
             {
-                await connection.StartAsync();
+                await _hubConnection.StartAsync();
                 messagesList.Items.Add("Connection started");
                 connectButton.IsEnabled = false;
                 sendButton.IsEnabled = true;
@@ -57,7 +57,7 @@ namespace MySignalR.WpfClient.Demo
             try
             {
                 #region snippet_InvokeAsync
-                await connection.InvokeAsync("SendMessage",
+                await _hubConnection.InvokeAsync("SendMessage",
                     userTextBox.Text, messageTextBox.Text);
                 #endregion
             }

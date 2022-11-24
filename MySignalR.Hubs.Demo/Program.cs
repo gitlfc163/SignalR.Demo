@@ -1,6 +1,10 @@
 using MySignalR.Hubs.Demo.Hubs;
+using MySignalR.Hubs.Demo.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//采用下面的形式把配置类型 实体注入到容器,以支持IOptions/IOptionsSnapshot/IOptionsMonitor
+builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSetting"));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -46,6 +50,9 @@ if (app.Environment.IsDevelopment())
 //app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapHub<ChatRoomHub>("/Hubs/ChatRoomHub"); //启用SignalR中间件
+
+app.MapHub<ChatRoomHub>("/Hubs/ChatRoomHub"); 
+app.MapHub<NotificationHub>("/Hubs/NotificationHub");
+
 app.MapControllers();
 app.Run();
