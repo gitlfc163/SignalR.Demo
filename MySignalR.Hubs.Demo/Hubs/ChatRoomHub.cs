@@ -16,6 +16,7 @@ public class ChatRoomHub : Hub
     /// <returns></returns>
     public async Task SendMessage(string user, string message)
     {
+        Console.WriteLine($"SendMessage:{user},{message},");
         await Clients.All.SendAsync("ReceiveMessage", user, message);
     }
     /// <summary>
@@ -26,6 +27,7 @@ public class ChatRoomHub : Hub
     /// <returns></returns>
     public async Task SendMessageToCaller(string user, string message)
     {
+        Console.WriteLine($"SendMessageToCaller:{user},{message},");
         await Clients.Caller.SendAsync("ReceiveMessage", user, message);
     }
     /// <summary>
@@ -36,6 +38,7 @@ public class ChatRoomHub : Hub
     /// <returns></returns>
     public async Task SendMessageToGroup(string user, string message)
     {
+        Console.WriteLine($"SendMessageToGroup:{user},{message},");
         await Clients.Group("SignalR Users").SendAsync("ReceiveMessage", user, message);
     }
     /// <summary>
