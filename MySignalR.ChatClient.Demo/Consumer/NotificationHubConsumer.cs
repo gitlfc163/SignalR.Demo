@@ -26,7 +26,7 @@ public sealed class NotificationHubConsumer : INotificationHubConsumer
 
         _hubConnection.StartAsync();
 
-        //订阅NotificationHub的NotificationReceived事件
+        //事件注册-订阅NotificationHub的NotificationReceived事件
         _hubConnection.On<Notification>("NotificationReceived", OnNotificationReceivedAsync);
 
         #region snippet_ClosedRestart
@@ -38,7 +38,7 @@ public sealed class NotificationHubConsumer : INotificationHubConsumer
         #endregion
     }
     /// <summary>
-    /// NotificationReceived事件注册
+    /// 事件注册-订阅NotificationHub的NotificationReceived事件
     /// </summary>
     /// <param name="notification"></param>
     /// <returns></returns>

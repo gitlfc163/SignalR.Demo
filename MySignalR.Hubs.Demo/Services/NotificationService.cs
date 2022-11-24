@@ -15,7 +15,6 @@ public class NotificationService
         _hubContext = hubContext;
     }
 
-
     public Task SendNotificationAsync(Notification notification)
     {
         return notification is not null

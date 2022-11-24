@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.SignalR.Client;
+
 using MySignalR.ChatClient.Demo.Consumer;
 using MySignalR.ChatClient.Demo.Models;
 
